@@ -1,0 +1,12 @@
+---
+# ------------------------------------------------------------------------
+# ISO 27001 Playbook - Reporting - Hardening
+# CentOS
+# ------------------------------------------------------------------------
+
+- name: Playbook for ISO 27001 Compliance
+  hosts: all
+  become: yes
+  remote_user: vagrant
+  roles:
+    - secure-config-management

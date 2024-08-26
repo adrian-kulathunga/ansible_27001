@@ -1,0 +1,21 @@
+---
+- name: Secure Configuration Management
+  hosts: all
+  become: yes
+  tasks:
+    - name: Enforce SSh configuration best practice
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: '^PermitRootLogin'
+        line: 'PermitRootLogin no'
+      tags: secure_config
+
+    - name: Ensure password complexity requirements are Management
+      lineinfile:
+        path: /etc/security/pwquality.conf
+        regexp: '^minlen'
+        line: 'minlen = 12'
+      tags: secure_config
+
+
+  
