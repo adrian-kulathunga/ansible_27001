@@ -11,4 +11,4 @@
 
 ## ISO 27001:2022 Technological Controls (Annex A)
 
-Secure Configuration Management
+Secure Configuration Management.
