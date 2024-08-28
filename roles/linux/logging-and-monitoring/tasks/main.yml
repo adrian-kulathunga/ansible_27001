@@ -1,0 +1,17 @@
+    - name: Ensure auditd is installed and running
+      service:
+        name: auditd
+        state: started
+        enabled: yes
+      tags: logging
+
+    - name: Configure syslog forwarding to a central server
+      lineinfile:
+        path: /etc/rsyslog.conf
+        regexp: '^*.* @'
+        line: '*.* @central.log.server:514'
+      tags: logging
+
+    - name: Enable process accounting
+      command: "accton /var/log/pacct"
+      tags: monitoring
