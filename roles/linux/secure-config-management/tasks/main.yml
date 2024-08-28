@@ -1,8 +1,4 @@
----
-- name: Secure Configuration Management
-  hosts: all
-  become: yes
-  tasks:
+
     - name: Enforce SSh configuration best practice
       lineinfile:
         path: /etc/ssh/sshd_config
