@@ -1,0 +1,14 @@
+
+    - name: Install and configure backup tool (e.g., rsync)
+      yum:
+        name: rsync
+        state: present
+      tags: backup
+
+    - name: Schedule regular backups using cron
+      cron:
+        name: "Daily Backup"
+        minute: "0"
+        hour: "2"
+        job: "rsync -a /data /backup/"
+      tags: backup

@@ -1,0 +1,9 @@
+    - name: Install and run vulnerability scanner (e.g., OpenSCAP)
+      command: "oscap xccdf eval --profile xccdf_org.ssgproject.content_profile_pci-dss /usr/share/xml/scap/ssg/content/ssg-rhel7-ds.xml"
+      tags: vulnerability_management
+
+    - name: Apply updates to address vulnerabilities
+      yum:
+        name: '*'
+        state: latest
+      tags: patching
