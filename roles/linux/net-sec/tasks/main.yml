@@ -1,0 +1,18 @@
+
+    - name: Configure firewall rules using iptables
+      iptables:
+        chain: INPUT
+        protocol: tcp
+        destination_port: 22
+        jump: ACCEPT
+      tags: network_security
+
+    - name: Install and configure fail2ban
+      yum:
+        name: fail2ban
+        state: present
+      tags: network_security
+
+    - name: Set up intrusion detection using Snort
+      shell: "yum install -y snort && snort -c /etc/snort/snort.conf"
+      tags: network_security

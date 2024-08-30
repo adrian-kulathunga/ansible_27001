@@ -4,14 +4,31 @@
         path: /etc/ssh/sshd_config
         regexp: '^PermitRootLogin'
         line: 'PermitRootLogin no'
-      tags: secure_config
+      tags:
+        - secure_config
+        - access_control
 
     - name: Ensure password complexity requirements are Management
       lineinfile:
         path: /etc/security/pwquality.conf
         regexp: '^minlen'
         line: 'minlen = 12'
-      tags: secure_config
+      tags: 
+        - secure_config
+        - access_control
+
+    - name: Enforce password expiration policy
+      lineinfile:
+        path: /etc/login.defs
+        regexp: '^PASS_MAX_DAYS'
+        line: 'PASS_MAX_DAYS 90'
+      tags: access_control
 
 
-  
+#Secure User Creation plain text hardcoded password, using vault is recomended
+#    - name: Create user with specific access permissions
+#     user:
+#       name: secureuser
+#       state: present
+#       password: "{{ 'password' | password_hash('sha512') }}"
+#     tags: access_control

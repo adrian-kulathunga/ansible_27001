@@ -1,0 +1,17 @@
+    - name: Enforce strong encryption for SSH
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: '^Ciphers'
+        line: 'Ciphers aes256-ctr,aes192-ctr,aes128-ctr'
+      tags: cryptography
+
+    - name: Ensure disk encryption is enabled
+      shell: "cryptsetup luksFormat /dev/sda"
+      tags: cryptography
+
+    - name: Configure HTTPS with strong TLS settings
+      lineinfile:
+        path: /etc/nginx/nginx.conf
+        regexp: '^ssl_protocols'
+        line: 'ssl_protocols TLSv1.2 TLSv1.3'
+      tags: cryptography
