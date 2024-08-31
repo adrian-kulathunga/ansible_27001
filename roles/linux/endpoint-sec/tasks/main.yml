@@ -1,0 +1,12 @@
+
+    - name: Install and configure endpoint protection software
+      yum:
+        name: endpoint-protection
+        state: present
+      tags: endpoint_security
+
+    - name: Enforce screen lock after inactivity
+      lineinfile:
+        path: /etc/dconf/db/local.d/00-screensaver
+        line: "[org/gnome/desktop/screensaver]\nlock-delay=300"
+      tags: endpoint_security

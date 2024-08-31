@@ -1,0 +1,12 @@
+
+    - name: Install and configure OSSEC
+      yum:
+        name: ossec-hids
+        state: present
+      tags: incident_detection
+
+    - name: Set up log forwarding to SIEM
+      lineinfile:
+        path: /etc/rsyslog.conf
+        line: "*.* @siem.server:514"
+      tags: monitoring

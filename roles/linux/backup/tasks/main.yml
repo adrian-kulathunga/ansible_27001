@@ -12,3 +12,18 @@
         hour: "2"
         job: "rsync -a /data /backup/"
       tags: backup
+
+
+
+#BCP
+    - name: Schedule regular database backups
+      cron:
+        name: "Database Backup"
+        minute: "0"
+        hour: "1"
+        job: "mysqldump -u root -p mydb > /backup/db.sql"
+      tags: bcp
+
+    - name: Test restore from backup
+      shell: "mysql -u root -p < /backup/db.sql"
+      tags: bcp

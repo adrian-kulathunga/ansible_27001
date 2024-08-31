@@ -1,0 +1,10 @@
+
+    - name: Restrict USB storage access
+      lineinfile:
+        path: /etc/modprobe.d/blacklist.conf
+        line: "blacklist usb-storage"
+      tags: dlp
+
+    - name: Monitor and block unauthorized file transfers
+      shell: "iptables -A OUTPUT -p tcp --dport 21 -j DROP"
+      tags: dlp

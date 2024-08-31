@@ -1,0 +1,7 @@
+
+    - name: Track configuration changes using Ansible Tower
+      tower_job_template:
+        name: "Track Changes"
+        inventory: "all"
+        job_type: "run"
+      tags: change_management

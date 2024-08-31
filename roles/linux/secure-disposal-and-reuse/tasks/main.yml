@@ -1,0 +1,4 @@
+
+    - name: Securely wipe disks before disposal
+      shell: "shred -n 35 -z /dev/sda"
+      tags: disposal

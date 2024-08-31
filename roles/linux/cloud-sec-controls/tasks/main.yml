@@ -1,0 +1,18 @@
+
+    - name: Apply security groups to restrict access
+      ec2_group:
+        name: my-secure-group
+        description: "Restrict access to the cloud instance"
+        region: us-east-1
+        rules:
+          - proto: tcp
+            from_port: 22
+            to_port: 22
+            cidr_ip: 192.168.1.0/24
+      tags: cloud_security
+
+    - name: Enable encryption for S3 buckets
+      aws_s3:
+        bucket: my-secure-bucket
+        encryption: true
+      tags: cloud_security

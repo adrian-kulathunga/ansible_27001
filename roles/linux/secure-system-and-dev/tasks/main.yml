@@ -1,0 +1,15 @@
+
+    - name: Enforce secure coding practices (e.g., code linting)
+      shell: "pylint --rcfile=.pylintrc my_code.py"
+      tags: secure_development
+
+    - name: Run static code analysis
+      shell: "bandit -r my_code/"
+      tags: secure_development
+
+    - name: Ensure code repository access is restricted
+      git_config:
+        scope: local
+        name: user.name
+        value: 'securedev'
+      tags: secure_development
