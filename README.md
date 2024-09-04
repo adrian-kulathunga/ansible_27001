@@ -11,4 +11,17 @@
 
 ## ISO 27001:2022 Technological Controls (Annex A)
 
-Secure Configuration Management..
+backup
+dlp                     
+net-sec                         
+secure-system-and-dev
+change-management       
+endpoint-sec            
+sec-monitor-incident-detection  
+vuln-management
+cloud-sec-controls      
+logging-and-monitoring  
+secure-config-management
+cryptographic-controls  
+malware-protection      
+secure-disposal-and-reuse
